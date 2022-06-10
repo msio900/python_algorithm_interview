@@ -408,11 +408,159 @@ list(enumerate(a))
 
 ### // 나눗셈 연산자
 
+ `//` 연산자는 정수형을 나눗셈할때 동일한 정수형을 결과로 리턴하면서 내림(Floor Division)연산자의 역할을 한다. 다시 말하면 몫(Quotient)을 구하는 연산자이다.
+
+```python
+5 / 3
+# 출력
+1.6666666666666667
+
+type(5 / 3)
+# 출력
+float
+
+5 // 3
+# 출력
+1
+
+type(5 // 3)
+# 출력
+int
+
+int(5 / 3)
+# 출력
+1
+
+type(int(5 / 3))
+# 출력
+int
+```
+
+* `5 // 3`와 `int(5 / 3)`는 동일하게 사용가능하다. 
+
+ 나머지를 구하는 모듈로 연산자는 `%`로 아래와 같이 사용가능하다.
+
+```python
+5 % 3
+# 출력
+2
+```
+
+ `divmod()`함수를 사용하면 몫과 나머지를 동시에 구할 수있다. 
+
+```python
+divmod(5, 3)
+# 출력
+(1, 2)
+```
+
 ### print
+
+ 코딩 테스트 문제 풀이 과정에서 디버거나 TDD방식으로 접근하기 어렵기 때문에`print()`는 디버깅을 위해 제공되는 유일한 기능이다. 
+
+* 콤마(,)를 통해 값을  구분해주는 경우 그대로 출력할 경우 띄어쓰기로 값을 구분해준다.
+
+  ```python
+  print('A1', 'B2')
+  
+  # 출력
+  A1 B2
+  ```
+
+* `sep`파라미터로 구분자를 콤마(,)로 지정해줄 수도 있다. 
+
+  ```python
+  print('A1', 'B2', sep=',')
+  
+  # 출력
+  A1,B2
+  ```
+
+* `print()`함수는 항상 줄바꿈을 하기 때문에 이를 막기 위해서는 `end=`파라미터를 공백으로 처리하면 줄바꿈을 하지 않을 수 있다.
+
+  ```python
+  print('aa', end=' ')
+  print('bb')
+  
+  # 출력
+  aa bb
+  ```
+
+* 리스트를 출력할 때는 `join()`으로 묶어서 처리한다.
+
+  ```python
+  a = ['A', 'B']
+  print(' '.join(a))
+  
+  # 출력
+  A B
+  ```
+
+* idx와 fruit이 정의되어 있을 때, idx 값에 1을 더해서 fruit와 함께 출력하는 방법으로는 다음과 같은 방법이 있다. 
+
+  ``` python
+  idx = 1
+  fruit = "Apple"
+  
+  print('{0}:{1}'.format(idx + 1, fruit))
+  
+  # 출력
+  2:Apple
+  print('{}:{}'.format(idx + 1, fruit))
+  
+  # 출력
+  2:Apple
+  ```
+
+* f-string(formated string literal)을 이용는 방법
+
+  (파이썬 3.6+에서만 지원)
+
+  ```python
+  print(f'{idx + 1}:{fruit}')
+  
+  # 출력
+  2:Apple
+  ```
 
 ### pass
 
+ 코드 전체 골격을 잡아 놓고 내부에서 처리할 내용은 차근차근 생각하며 만드는 의도로 다음과 같이 코딩하는 경우가 있다.
+
+```python
+class MyClass(object):
+    def method_a(self):
+
+    def method_b(self):
+        print("Method B")
+c = MyClass()
+
+# 출력
+    def method_b(self):
+      ^
+IndentationError: expected an indented block
+```
+
+* 하지만 이럴 경우 이와 같이 인텐트 오류가 발생한다. 
+
+ `method_a()`에 아무런 처리를 하지 않았기 때문에 엉뚱하게 `method_b()`에서 오류가 발생한 것인데, 필요한 오류이긴하지만 한참 개발을 하던 중에 이런 오류를 맞닥뜨리게 될 경우 생각보다 처리하기가 번거롭다. 이를 막기 위해서 `pass`를 삽입하여 `method_a()`의 오류를 처리할 수 있다.
+
+```python
+class MyClass(object):
+    def method_a(self):
+        # 여기에 pass를 추가
+        pass
+
+    def method_b(self):
+        print("Method B")
+c = MyClass()
+```
+
+ `pass`는 null연산으로(null operation)으로 아무것도 하지 않는 기능이다. `pass`는 **목업(mock-up)**인터페이스부터 구현한 다음에 추후 구현을 진행할 수 있게 한다. 
+
 ### locals
+
+
 
 ## 3_3 코딩 스타일[📑](#contents)<a id="3_3"></a>
 
