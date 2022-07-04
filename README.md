@@ -13,3 +13,5 @@
 ### 2부 파이썬[💾](./chap_2/)
 3. 파이썬[✏](./chap_2/3_python.md)
 4. 빅오, 자료형[✏](./chap_2/4_bigO&data_type.md)
+
+6. 문자열 조작[✏](./chap_2/6_string_manipulation.md)
